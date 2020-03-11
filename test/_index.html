@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>PlannedLandUse-Files</title>
+		<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script-->
+		
+		<!--fixed for IE11-->
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+		<script src="https://nightly.datatables.net/js/jquery.dataTables.js"></script>
+		<link href="https://cdn.datatables.net/fixedheader/3.1.2/css/fixedHeader.dataTables.css" rel="stylesheet" type="text/css" />
+		<script src="https://cdn.datatables.net/fixedheader/3.1.2/js/dataTables.fixedHeader.js"></script>
+		
+		<LINK REL="STYLESHEET" TYPE="text/css" HREF="app/css/index.css">		
+		<script type="text/javascript">				
+		$(document).ready(function() {
+			var table = $('#example').DataTable( {
+				ajax: {
+					url: "app/data/SpatialPlanOverview.json",
+					dataSrc: ''
+				},
+				columns: [
+					{ "data": "gml_id" },
+					{ "data": "plan_name" },
+					{ "data": "plan_type" }
+				]
+			} );
+			
+			$('#example tbody').on( 'click', 'tr', function () {	
+				if ( $(this).hasClass('selected') ) {
+					$(this).removeClass('selected');
+				}
+				else {
+					table.$('tr.selected').removeClass('selected');
+					$(this).addClass('selected');						
+				}
+			} );		 			
+		} );								
+		</script>
+	</head>
+	<body>	
+	<table id="example" class="display" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>gml_id</th>
+				<th>plan_name</th>
+				<th>plan_type</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>gml_id</th>
+				<th>plan_name</th>
+				<th>plan_type</th>
+            </tr>
+        </tfoot>
+	</table>
+	</body>
+</html>
